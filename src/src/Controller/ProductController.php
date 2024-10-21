@@ -28,6 +28,8 @@ class ProductController extends AbstractController
             ],
         ];
 
+        dump($products);
+
         return $this->render(
             'product/list.html.twig',
             ['products' => $products]
