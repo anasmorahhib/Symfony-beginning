@@ -19,4 +19,3 @@ product:
     path: /product/{id}
     controller: App\Controller\ProductController::product
     methods: [GET]
- 

@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController
 {
     // Simple Route
-    #[Route('/')]
+    #[Route('/', name: 'homePage')]
     public function homePage(): Response
     {
         return new Response('Hi, Im a home page.');

@@ -17,7 +17,7 @@
             <img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.title }}" />
             <h3>{{ product.title }}</h3>
             <p>{{ product.price }} DH</p>
-            <button class="add-to-cart">Ajouter au panier</button>
+            <a href="{{ path('product', {'id': product.id}) }}" class="see-more">Voir plus</a>
         </div>
     {% endfor %}
 </div>
