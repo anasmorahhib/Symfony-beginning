@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,15 +42,16 @@ class ProductApiController extends AbstractController
         ];
     }
 
-    #[Route(path:'/api/products', methods:['GET'])]
+    #[Route(path: '/api/products', methods: ['GET'])]
     public function products(): Response
     {
         return $this->json($this->products);
     }
 
-    #[Route(path:'/api/product/{id<\d+>}', methods:['GET'])]
-    public function product($id): Response
+    #[Route(path: '/api/product/{id<\d+>}', methods: ['GET'])]
+    public function product($id, LoggerInterface $logger): Response
     {
+        $logger->info('Api call User id=#{id}', ['id' => $id]);
         return $this->json($this->products[$id]);
     }
 }

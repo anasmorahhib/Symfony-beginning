@@ -3,6 +3,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 class ProductController extends AbstractController
 {
@@ -51,12 +52,16 @@ class ProductController extends AbstractController
         ); // render return a Response
     }
 
-    public function product($id)
+    public function product($id, Environment $twig)
     {
-        return $this->render(
+        $html = $twig->render(
             'product/single.html.twig',
             ['product' => $this->products[$id]]
         );
+
+        dd($html);
+
+        return new Response($html);
     }
 
     public function new()
