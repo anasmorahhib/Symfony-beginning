@@ -9,17 +9,18 @@
 {% endblock %}
 
 {% block body %}
-<div class="header">
-    <h1>Products List</h1>
-        {#Cart#}
-        <div class="cart" {{ stimulus_controller('cart') }}>
-            <span class="cart-icon">🛒</span>
-            <span class="item-count">0</span> 
-        </div>
+<div {{ stimulus_controller('cart') }}/>
+    <div class="header">
+        <h1>Products List</h1>
+            {#Cart#}
+            <div class="cart">
+                <span class="cart-icon">🛒</span>
+                <span class="item-count" data-cart-target="cartCount">0</span> 
+            </div>
     </div>
 
     {# this is a list of Products #}
-    <div class="product-container" {{ stimulus_controller('cart') }}>
+    <div class="product-container">
         {% for product in products %}
             <div class="product">
                 <img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.title }}" />
@@ -31,4 +32,5 @@
             </div>
         {% endfor %}
     </div>
+</div>
 {% endblock %}
