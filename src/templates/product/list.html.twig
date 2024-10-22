@@ -4,6 +4,7 @@
 {% block title %}Product List{% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/products.css') }}">
 {% endblock %}
 
