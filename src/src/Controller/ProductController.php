@@ -59,8 +59,6 @@ class ProductController extends AbstractController
             ['product' => $this->products[$id]]
         );
 
-        dd($html);
-
         return new Response($html);
     }
 
