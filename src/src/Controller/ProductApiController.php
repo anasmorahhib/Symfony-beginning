@@ -54,4 +54,14 @@ class ProductApiController extends AbstractController
         $logger->info('Api call User id=#{id}', ['id' => $id]);
         return $this->json($this->products[$id]);
     }
+
+    #[Route(path: '/api/product/{id<\d+>}', methods: ['POST'], name: 'cart_add')]
+    public function addToCart($id, LoggerInterface $logger): Response
+    {
+        $logger->info(
+            'Product id=#{id} Added successfully',
+            ['id' => $id]
+        );
+        return $this->json($this->products[$id]);
+    }
 }

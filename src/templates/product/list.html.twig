@@ -12,13 +12,12 @@
 <div {{ stimulus_controller('cart') }}/>
     <div class="header">
         <h1>Products List</h1>
-            {#Cart#}
+            {# Cart #}
             <div class="cart">
                 <span class="cart-icon">🛒</span>
                 <span class="item-count" data-cart-target="cartCount">0</span> 
             </div>
     </div>
-
     {# this is a list of Products #}
     <div class="product-container">
         {% for product in products %}
@@ -27,7 +26,11 @@
                 <h3>{{ product.title }}</h3>
                 <p>{{ product.price }} DH</p>
                 
-                <button class="add-to-cart" {{stimulus_action('cart', 'addToCart')}}>Ajouter au panier</button>
+                <button class="add-to-cart" 
+                    data-product-url="{{ path('cart_add', {id: product.id}) }}"
+                    {{stimulus_action('cart', 'addToCart')}}>
+                    Ajouter au panier
+                </button>
                 <a  href="{{ path('product', {'id': product.id}) }}" class="see-more">Voir plus</a>
             </div>
         {% endfor %}
